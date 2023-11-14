@@ -6,9 +6,12 @@ import "../src/css/theme.css";
 function App() {
   return (
     <>
-      <main className="transaction-app-wrapper container container-md">
+      <main className="transaction-app-wrapper container-md">
         <div className="transaction-button-container horizontal-center">
-          <button id="transaction-modal-button" className="btn">
+          <button
+            id="transaction-modal-button"
+            className="btn spread-out-transition"
+          >
             Create New Transaction
           </button>
         </div>
@@ -44,7 +47,6 @@ function App() {
           </div>
         </div>
       </section>
-
     </>
   );
 }

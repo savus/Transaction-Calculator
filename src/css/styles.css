@@ -22,6 +22,11 @@
    opacity:0;
 }
 
+.full-site-modal.is-visible {
+   visibility:visible;
+   opacity:1;
+}
+
 
 
 
