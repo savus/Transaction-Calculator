@@ -1,0 +1,12 @@
+{
+   "transactions": [
+      {
+         "id": 0,
+         "previousBalance": "0.00",
+         "addedAmount": "0.00",
+         "subtractedAmount": "0.00",
+         "newBalance": "0.00"
+
+      }
+   ]
+}
