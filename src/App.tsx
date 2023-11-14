@@ -1,17 +1,19 @@
 import { useState } from "react";
 import "../src/css/styles.css";
+import "../src/css/base.css";
+import "../src/css/theme.css";
 
 function App() {
   return (
     <>
-      <main className="transaction-app-wrapper">
-        <div className="transaction-button-container">
-          <button className="transaction-modal-button">
+      <main className="transaction-app-wrapper container container-md">
+        <div className="transaction-button-container horizontal-center">
+          <button id="transaction-modal-button" className="btn">
             Create New Transaction
           </button>
         </div>
         <section className="transaction-history-container">
-          <h3>Transaction History</h3>
+          <h3 className="horizontal-center">Transaction History</h3>
           <ul className="record-list"></ul>
         </section>
       </main>
@@ -42,7 +44,7 @@ function App() {
           </div>
         </div>
       </section>
-      
+
     </>
   );
 }

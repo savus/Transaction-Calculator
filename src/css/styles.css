@@ -1,3 +1,36 @@
+
+.transaction-app-wrapper 
+{
+   border: 1px solid rgba(25,25,25, 0.6);
+   box-shadow: -1px 1px 1px 1px black;
+   margin-top:3rem;
+}
+
+.transaction-app-wrapper .transaction-button-container {
+   margin: 1rem 0;
+}
+
+.transaction-app-wrapper .transaction-history-container > h3 {
+   padding-bottom: 1rem;
+   border-bottom: 2px solid var(--border);
+}
+
+
+
+.full-site-modal {
+   visibility:hidden;
+   opacity:0;
+}
+
+
+
+
+
+
+
+
+
+
 /* :root {
    --background-color:#e3e3e3;
    --border-size: 2px;
