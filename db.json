@@ -1,18 +1,40 @@
 {
-   "transactions": [
-      {
-         "id": 0,
-         "addedAmount": "0.00",
-         "subtractedAmount": "0.00",
-         "newBalance": "20.00"
-
-      },
-      {
-         "id": 1,
-         "addedAmount": "0.00",
-         "subtractedAmount": "0.00",
-         "newBalance": "20.00"
-
-      }
-   ]
+  "transactions": [
+    {
+      "id": 0,
+      "addedAmount": "0.00",
+      "subtractedAmount": "0.00",
+      "newBalance": "20.00"
+    },
+    {
+      "id": 1,
+      "addedAmount": "0.00",
+      "subtractedAmount": "0.00",
+      "newBalance": "20.00"
+    },
+    {
+      "addedAmount": "5.00",
+      "subtractedAmount": "0.00",
+      "newBalance": "25.00",
+      "id": 2
+    },
+    {
+      "addedAmount": "0.00",
+      "subtractedAmount": "1.00",
+      "newBalance": "24.00",
+      "id": 3
+    },
+    {
+      "addedAmount": "0.00",
+      "subtractedAmount": "5.00",
+      "newBalance": "18.00",
+      "id": 4
+    },
+    {
+      "addedAmount": "0.00",
+      "subtractedAmount": "5.00",
+      "newBalance": "13.00",
+      "id": 5
+    }
+  ]
 }

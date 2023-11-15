@@ -11,13 +11,6 @@ function App() {
   const [transactionModalVisible, setTransactionModalVisible] = useState("");
   const [allTransactions, setAllTransactions] = useState<TTransaction[]>([]);
   const [lastBalance, setLastBalance] = useState("0.00");
-  const [activeTransaction, setActiveTransaction] = useState<
-    Omit<TTransaction, "id">
-  >({
-    addedAmount: "0.00",
-    subtractedAmount: "0.00",
-    newBalance: "0.00",
-  });
 
   const fetchData = () => {
     return Requests.getAllTransactions().then((transactions) => {
@@ -25,6 +18,15 @@ function App() {
       setAllTransactions(transactions);
     });
   };
+
+  const postTransaction = (transaction: Omit<TTransaction, "id">) => {
+    return Requests.postTransaction(transaction).then(fetchData);
+  }
+
+  const getReversedTransactionList = () => {
+    const reversedList = [...allTransactions].sort((a,b) => b.id - a.id);
+    return reversedList;
+  }
 
   useEffect(() => {
     fetchData();
@@ -45,10 +47,10 @@ function App() {
         </div>
         <section className="transaction-history-container">
           <h3 className="horizontal-center header-md">Transaction History</h3>
-          {allTransactions.map((transaction) => (
+          {getReversedTransactionList().map((transaction) => (
             <div className="transaction-item" key={transaction.id}>
               <div className="transaction-content">
-                <div>Previous Balance: {transaction.previousBalance}</div>
+                <div>Previous Balance: {lastBalance}</div>
                 <div>Added Amount: +{transaction.addedAmount}</div>
                 <div>Subtracted Amount: -{transaction.subtractedAmount}</div>
                 <div>Current Balance: {transaction.newBalance}</div>
@@ -80,6 +82,10 @@ function App() {
               lastBalance={lastBalance}
               setLastBalance={(lastBalance) => {
                 setLastBalance(lastBalance);
+              }}
+              postTransaction={postTransaction}
+              setTransactionModalVisible={(transactionModalVisible) => {
+                setTransactionModalVisible(transactionModalVisible);
               }}
             />
           </div>
