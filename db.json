@@ -2,10 +2,16 @@
    "transactions": [
       {
          "id": 0,
-         "previousBalance": "0.00",
          "addedAmount": "0.00",
          "subtractedAmount": "0.00",
-         "newBalance": "0.00"
+         "newBalance": "20.00"
+
+      },
+      {
+         "id": 1,
+         "addedAmount": "0.00",
+         "subtractedAmount": "0.00",
+         "newBalance": "20.00"
 
       }
    ]

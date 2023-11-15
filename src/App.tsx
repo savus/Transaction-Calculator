@@ -4,14 +4,26 @@ import "../src/css/theme.css";
 import "../src/css/styles.css";
 import { TTransaction } from "./types";
 import { Requests } from "./api";
+import { TextInput } from "./components/TextInput";
+import { TransactionForm } from "./components/TransactionForm";
 
 function App() {
   const [transactionModalVisible, setTransactionModalVisible] = useState("");
   const [allTransactions, setAllTransactions] = useState<TTransaction[]>([]);
   const [lastBalance, setLastBalance] = useState("0.00");
+  const [activeTransaction, setActiveTransaction] = useState<
+    Omit<TTransaction, "id">
+  >({
+    addedAmount: "0.00",
+    subtractedAmount: "0.00",
+    newBalance: "0.00",
+  });
 
   const fetchData = () => {
-    return Requests.getAllTransactions().then(setAllTransactions);
+    return Requests.getAllTransactions().then((transactions) => {
+      setLastBalance(transactions[transactions.length - 1].newBalance);
+      setAllTransactions(transactions);
+    });
   };
 
   useEffect(() => {
@@ -53,7 +65,7 @@ function App() {
         <div className="modal-content container-md">
           <header className="modal-header">
             <div className="current-balance">
-              <h3>Current Balance: 0.00</h3>
+              <h3>Current Balance: {lastBalance}</h3>
             </div>
             <div className="close-modal-container">
               <i
@@ -64,33 +76,12 @@ function App() {
             </div>
           </header>
           <div className="modal-body">
-            <form action="" className="new-transaction-form">
-              <div className="form-divider left-side">
-                <div className="input-container">
-                  <label htmlFor="new-balance">
-                    Change Current Balance: --
-                  </label>
-                  <input type="text" placeholder="0.00" />
-                </div>
-                <div className="input-container">
-                  <label htmlFor="new-balance">Amount to Add: --</label>
-                  <input type="text" placeholder="0.00" />
-                </div>
-                <div className="input-container">
-                  <label htmlFor="new-balance">Amount to Subtract: --</label>
-                  <input type="text" placeholder="0.00" />
-                </div>
-              </div>
-              <div className="form-divider right-side">
-                <h3 className="balance-to-submit">New Balance: 0.00</h3>
-                <button
-                  id="record-transaction"
-                  className="btn spread-out-transition"
-                >
-                  Record Transaction
-                </button>
-              </div>
-            </form>
+            <TransactionForm
+              lastBalance={lastBalance}
+              setLastBalance={(lastBalance) => {
+                setLastBalance(lastBalance);
+              }}
+            />
           </div>
         </div>
       </section>
