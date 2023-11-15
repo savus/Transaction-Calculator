@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "../src/css/styles.css";
 import "../src/css/base.css";
 import "../src/css/theme.css";
+import "../src/css/styles.css";
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
       </main>
 
       <section className="modal-section">
-        <div className="full-site-modal">
+        <div className="full-site-modal is-visible">
           <header className="modal-header">
             <div className="current-balance">
               <h3>Current Balance: 0.00</h3>

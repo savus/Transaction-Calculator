@@ -1,3 +1,13 @@
+:root {
+  --size-8: 0.5rem;
+  --size-10: 0.625rem;
+  --size-15: 0.938rem;
+  --size-18: 1.125rem;
+  --size-22: 1.375rem
+  --size-30: 1.875rem;
+  --size-50: 3.125rem;
+}
+
 section,
 footer,
 header,
@@ -64,23 +74,23 @@ button {
 }
 
 .btn {
-  letter-spacing: 1.2px;
+  letter-spacing: 1.5px;
   padding: 1rem 2rem;
   border-radius: 50rem;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
-  border: 2px solid #666;
+  border: 1px solid rgba(0,0,0,0.3);
   background-color: var(--bg);
   cursor:pointer;
-  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
   transition: 0.4s ease-in-out;
+  font-weight:bold;
 }
 
 .btn:hover {
-   transform: scale(1.1);
-   color:#fff;
+  transform: scale(1.1);
+  color:#fff;
 }
 
 .btn:not(:diabled):not(.disabled) button:not(:diabled):not(.disabled) {
@@ -88,9 +98,9 @@ button {
 }
 
 .btn.spread-out-transition {
-   z-index:1;
-   position:relative;
-   overflow:hidden;
+  z-index:1;
+  position:relative;
+  box-shadow: 0 -6px 10px 0px rgba(22, 155, 243, 0.6) inset, 0 6px 15px 0px rgba(0,0,0,0.5);
 }
 
 .btn.spread-out-transition::before {
@@ -101,14 +111,15 @@ button {
    right:0;
    bottom:0;
    z-index:-1;
-   background-color:rgba(66,66,66,0.5);
+   background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
    transform:scale(0);
    transition: 0.35s ease-in;
    border-radius:50rem;
 }
 
 .btn.spread-out-transition:hover::before {
-   transform:scale(1.5);
+   transform:scale(1.1);
+   border: none;
 }
 
 .horizontal-center {

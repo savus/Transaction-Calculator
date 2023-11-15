@@ -2,8 +2,10 @@
 .transaction-app-wrapper 
 {
    border: 1px solid rgba(25,25,25, 0.6);
-   box-shadow: -1px 1px 1px 1px black;
+   border-radius:20px;
+   box-shadow: 0px 0px 32px 1px rgba(255,255,255,0.4);
    margin-top:3rem;
+   background-image: linear-gradient(to bottom, #ffefba 80%, #ffffff);
 }
 
 .transaction-app-wrapper .transaction-button-container {
@@ -18,6 +20,14 @@
 
 
 .full-site-modal {
+   position:absolute;
+   top:0;
+   left:0;
+   right:0;
+   bottom:0;
+   padding:1rem;
+   background-color:#fff;
+   z-index:100;
    visibility:hidden;
    opacity:0;
 }
