@@ -1,50 +1,110 @@
-
-.transaction-app-wrapper 
-{
-   border: 1px solid rgba(25,25,25, 0.6);
-   border-radius:20px;
-   box-shadow: 0px 0px 32px 1px rgba(255,255,255,0.4);
-   margin-top:3rem;
-   background-image: linear-gradient(to bottom, #ffefba 80%, #ffffff);
+.transaction-app-wrapper {
+  border: 1px solid rgba(25, 25, 25, 0.6);
+  border-radius: 20px;
+  box-shadow: 0px 0px 32px 1px rgba(255, 255, 255, 0.4);
+  margin-top: 3rem;
+  background-image: linear-gradient(to bottom, #ffefba 80%, #ffffff);
 }
 
 .transaction-app-wrapper .transaction-button-container {
-   margin: 1rem 0;
+  margin: 1rem 0;
 }
 
 .transaction-app-wrapper .transaction-history-container > h3 {
-   padding-bottom: 1rem;
-   border-bottom: 2px solid var(--border);
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border);
 }
 
-
-
-.full-site-modal {
-   position:absolute;
-   top:0;
-   left:0;
-   right:0;
-   bottom:0;
-   padding:1rem;
-   background-color:#fff;
-   z-index:100;
-   visibility:hidden;
-   opacity:0;
+.modal-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease-in-out;
 }
 
-.full-site-modal.is-visible {
-   visibility:visible;
-   opacity:1;
+.modal-section.is-visible {
+  visibility: visible;
+  opacity: 1;
 }
 
+.modal-section .modal-content {
+  position:relative;
+  top:-5rem;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 30px;
+  border: 1px solid black;
+  box-shadow: 0px 0px 12px 0px rgba(255, 255, 255, 0.4);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease-in;
+}
 
+.modal-section.is-visible .modal-content {
+  transition-delay: 0.17s;
+  top:0;
+  visibility: visible;
+  opacity: 1;
+}
 
+.modal-content .modal-header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid #666;
+}
 
+.modal-header .fa-x {
+  font-size: var(--size-18);
+  transition: transform 0.35s ease-in;
+}
 
+.modal-header .fa-x:hover {
+  transform: scale(1.3);
+  cursor: pointer;
+}
 
+.modal-body {
+  padding-top: var(--size-18);
+}
 
+.new-transaction-form {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 
+.form-divider {
+  min-width: 240px;
+}
 
+.right-side h3 {
+  text-align: center;
+  margin-bottom: var(--size-15);
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--size-10);
+}
+
+.input-container input {
+  padding: 8px;
+  border-radius: 50rem;
+  border: 1px solid #333;
+  box-shadow: 1px -1px 5px 0px rgba(12, 12, 12, 0.3) inset;
+  outline: none;
+}
 
 /* :root {
    --background-color:#e3e3e3;
