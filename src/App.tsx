@@ -8,6 +8,7 @@ import { Requests } from "./api";
 function App() {
   const [transactionModalVisible, setTransactionModalVisible] = useState("");
   const [allTransactions, setAllTransactions] = useState<TTransaction[]>([]);
+  const [lastBalance, setLastBalance] = useState("0.00");
 
   const fetchData = () => {
     return Requests.getAllTransactions().then(setAllTransactions);
@@ -16,6 +17,7 @@ function App() {
   useEffect(() => {
     fetchData();
   }, []);
+
   return (
     <>
       <main className="transaction-app-wrapper container-md">
