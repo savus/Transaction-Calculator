@@ -4,29 +4,31 @@ import "../src/css/theme.css";
 import "../src/css/styles.css";
 import { TTransaction } from "./types";
 import { Requests } from "./api";
-import { TextInput } from "./components/TextInput";
-import { TransactionForm } from "./components/TransactionForm";
+import { ModalSection } from "./components/Layouts/ModalSection";
+import { TransactionHistory } from "./components/TransactionHistory";
 
 function App() {
   const [transactionModalVisible, setTransactionModalVisible] = useState("");
   const [allTransactions, setAllTransactions] = useState<TTransaction[]>([]);
   const [lastBalance, setLastBalance] = useState("0.00");
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = () => {
+    setIsLoading(true);
     return Requests.getAllTransactions().then((transactions) => {
       setLastBalance(transactions[transactions.length - 1].newBalance);
       setAllTransactions(transactions);
-    });
+    }).finally(() => setIsLoading(false));
   };
 
   const postTransaction = (transaction: Omit<TTransaction, "id">) => {
     return Requests.postTransaction(transaction).then(fetchData);
-  }
+  };
 
   const getReversedTransactionList = () => {
-    const reversedList = [...allTransactions].sort((a,b) => b.id - a.id);
+    const reversedList = [...allTransactions].sort((a, b) => b.id - a.id);
     return reversedList;
-  }
+  };
 
   useEffect(() => {
     fetchData();
@@ -46,51 +48,22 @@ function App() {
           </button>
         </div>
         <section className="transaction-history-container">
-          <h3 className="horizontal-center header-md">Transaction History</h3>
-          {getReversedTransactionList().map((transaction) => (
-            <div className="transaction-item" key={transaction.id}>
-              <div className="transaction-content">
-                <div>Previous Balance: {lastBalance}</div>
-                <div>Added Amount: +{transaction.addedAmount}</div>
-                <div>Subtracted Amount: -{transaction.subtractedAmount}</div>
-                <div>Current Balance: {transaction.newBalance}</div>
-              </div>
-            </div>
-          ))}
+          <TransactionHistory
+            reversedTransactionList={getReversedTransactionList()}
+            lastBalance={lastBalance}
+          />
         </section>
       </main>
 
-      <section
-        className={`modal-section ${transactionModalVisible}`}
-        id="new-transaction"
-      >
-        <div className="modal-content container-md">
-          <header className="modal-header">
-            <div className="current-balance">
-              <h3>Current Balance: {lastBalance}</h3>
-            </div>
-            <div className="close-modal-container">
-              <i
-                className="fa-solid fa-x"
-                data-close="new-transaction"
-                onClick={() => setTransactionModalVisible("")}
-              ></i>
-            </div>
-          </header>
-          <div className="modal-body">
-            <TransactionForm
-              lastBalance={lastBalance}
-              setLastBalance={(lastBalance) => {
-                setLastBalance(lastBalance);
-              }}
-              postTransaction={postTransaction}
-              setTransactionModalVisible={(transactionModalVisible) => {
-                setTransactionModalVisible(transactionModalVisible);
-              }}
-            />
-          </div>
-        </div>
-      </section>
+      <ModalSection
+        transactionModalVisible={transactionModalVisible}
+        setTransactionModalVisible={(value: string) => {
+          setTransactionModalVisible(value);
+        }}
+        postTransaction={postTransaction}
+        lastBalance={lastBalance}
+        setLastBalance={setLastBalance}
+      />
     </>
   );
 }

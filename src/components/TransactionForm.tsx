@@ -1,4 +1,5 @@
 import { TTransaction } from "../types";
+import { FormDivider } from "./Layouts/FormDivider";
 import { TextInput } from "./TextInput";
 import { useState } from "react";
 
@@ -7,11 +8,13 @@ export const TransactionForm = ({
   setLastBalance,
   postTransaction,
   setTransactionModalVisible,
+  isLoading
 }: {
   lastBalance: string;
   setLastBalance: (lastBalance: string) => void;
   postTransaction: (transaction: Omit<TTransaction, "id">) => Promise<unknown>;
   setTransactionModalVisible: (transactionModalVisible: string) => void;
+  isLoading: boolean
 }) => {
   const [amountToAddInput, setAmountToAddInput] = useState("0.00");
   const [amountToSubtractInput, setAmountToSubtractInput] = useState("0.00");
@@ -44,7 +47,7 @@ export const TransactionForm = ({
           resetTotals();
         }}
       >
-        <div className="form-divider left-side">
+        <FormDivider classList="left-side">
           <TextInput
             labelText="Change Current Balance:"
             inputProps={{
@@ -52,6 +55,7 @@ export const TransactionForm = ({
               placeholder: "0.00",
               value: lastBalance,
               onChange: (e) => setLastBalance(e.target.value),
+              disabled: isLoading
             }}
           />
           <TextInput
@@ -61,6 +65,7 @@ export const TransactionForm = ({
               placeholder: "0.00",
               value: amountToAddInput,
               onChange: (e) => setAmountToAddInput(e.target.value),
+              disabled: isLoading
             }}
           />
           <TextInput
@@ -70,10 +75,11 @@ export const TransactionForm = ({
               placeholder: "0.00",
               value: amountToSubtractInput,
               onChange: (e) => setAmountToSubtractInput(e.target.value),
+              disabled: isLoading
             }}
           />
-        </div>
-        <div className="form-divider right-side">
+        </FormDivider>
+        <FormDivider classList="right-side">
           <h3 className="balance-to-submit">
             New Balance: {calculateTotals()}
           </h3>
@@ -82,12 +88,13 @@ export const TransactionForm = ({
             id="record-transaction"
             className="btn spread-out-transition"
             onClick={() => {
-                setTransactionModalVisible("");
+              setTransactionModalVisible("");
             }}
+            disabled={isLoading}
           >
             Record Transaction
           </button>
-        </div>
+        </FormDivider>
       </form>
     </>
   );

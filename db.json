@@ -35,6 +35,18 @@
       "subtractedAmount": "5.00",
       "newBalance": "13.00",
       "id": 5
+    },
+    {
+      "addedAmount": "0.00",
+      "subtractedAmount": "0.00",
+      "newBalance": "13.00",
+      "id": 6
+    },
+    {
+      "addedAmount": "0.00",
+      "subtractedAmount": "0.00",
+      "newBalance": "13.00",
+      "id": 7
     }
   ]
 }
