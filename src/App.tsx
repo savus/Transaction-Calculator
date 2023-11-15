@@ -1,10 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../src/css/base.css";
 import "../src/css/theme.css";
 import "../src/css/styles.css";
+import { TTransaction } from "./types";
+import { Requests } from "./api";
 
 function App() {
   const [transactionModalVisible, setTransactionModalVisible] = useState("");
+  const [allTransactions, setAllTransactions] = useState<TTransaction[]>([]);
+
+  const fetchData = () => {
+    return Requests.getAllTransactions().then(setAllTransactions);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <>
       <main className="transaction-app-wrapper container-md">
@@ -19,15 +30,17 @@ function App() {
           </button>
         </div>
         <section className="transaction-history-container">
-          <h3 className="horizontal-center">Transaction History</h3>
-          <div className="transaction-item">
-            <div className="transaction-content">
-              <div>Previous Balance: 100.00</div>
-              <div>Added Amount: +5.00</div>
-              <div>Subtracted Amount: -0.00</div>
-              <div>Current Balance: 105.00</div>
+          <h3 className="horizontal-center header-md">Transaction History</h3>
+          {allTransactions.map((transaction) => (
+            <div className="transaction-item" key={transaction.id}>
+              <div className="transaction-content">
+                <div>Previous Balance: {transaction.previousBalance}</div>
+                <div>Added Amount: +{transaction.addedAmount}</div>
+                <div>Subtracted Amount: -{transaction.subtractedAmount}</div>
+                <div>Current Balance: {transaction.newBalance}</div>
+              </div>
             </div>
-          </div>
+          ))}
         </section>
       </main>
 

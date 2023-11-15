@@ -78,6 +78,7 @@ button {
 }
 
 .btn {
+  font-size:0.9rem;
   letter-spacing: 1.5px;
   padding: 1rem 2rem;
   border-radius: 50rem;
@@ -131,4 +132,9 @@ button {
   justify-content: center;
   margin: auto;
   text-align: center;
+}
+
+.header-md {
+  font-size: 1.4rem;
+  letter-spacing:0.5px;
 }
