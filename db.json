@@ -47,6 +47,12 @@
       "subtractedAmount": "0.00",
       "newBalance": "13.00",
       "id": 7
+    },
+    {
+      "addedAmount": "0.00",
+      "subtractedAmount": "0.00",
+      "newBalance": "13.00",
+      "id": 8
     }
   ]
 }

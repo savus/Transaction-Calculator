@@ -21,7 +21,11 @@ export const ModalSection = ({
       <section
         className={`modal-section ${transactionModalVisible}`}
         id="new-transaction"
-        onClick={() => setTransactionModalVisible("")}
+        onClick={(e) => {
+            if (e.target.id === "new-transaction") {
+                setTransactionModalVisible("");
+            }
+        }}
       >
         <div className="modal-content container-md">
           <header className="modal-header">
