@@ -20,7 +20,14 @@ function App() {
         </div>
         <section className="transaction-history-container">
           <h3 className="horizontal-center">Transaction History</h3>
-          <ul className="record-list"></ul>
+          <div className="transaction-item">
+            <div className="transaction-content">
+              <div>Previous Balance: 100.00</div>
+              <div>Added Amount: +5.00</div>
+              <div>Subtracted Amount: -0.00</div>
+              <div>Current Balance: 105.00</div>
+            </div>
+          </div>
         </section>
       </main>
 

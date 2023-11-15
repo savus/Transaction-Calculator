@@ -15,6 +15,23 @@
   border-bottom: 2px solid var(--border);
 }
 
+.transaction-item {
+   border: 1px solid rgba(22,22,22,0.8);
+   margin:1rem;
+   display:flex;
+   justify-content: center;
+   align-items: center;
+   font-size:var(--size-18);
+   padding: 14px 0 10px;
+   box-shadow: -2px 2px 5px 0px rgba(0,0,0,0.7);
+}
+
+.transaction-content div {
+   margin-bottom:var(--size-10);
+}
+
+
+
 .modal-section {
   position: absolute;
   top: 0;
