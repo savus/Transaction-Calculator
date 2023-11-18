@@ -2,57 +2,52 @@
   "transactions": [
     {
       "id": 0,
+      "previousBalance": "0.00",
       "addedAmount": "0.00",
       "subtractedAmount": "0.00",
       "newBalance": "20.00"
     },
     {
-      "id": 1,
+      "previousBalance": "100.00",
       "addedAmount": "0.00",
-      "subtractedAmount": "0.00",
-      "newBalance": "20.00"
+      "subtractedAmount": "5.00",
+      "currentBalance": "95.00",
+      "id": 1
     },
     {
-      "addedAmount": "5.00",
-      "subtractedAmount": "0.00",
-      "newBalance": "25.00",
+      "previousBalance": "95.00",
+      "addedAmount": "0.00",
+      "subtractedAmount": "5.00",
+      "currentBalance": "90.00",
       "id": 2
     },
     {
+      "previousBalance": "90.00",
       "addedAmount": "0.00",
-      "subtractedAmount": "1.00",
-      "newBalance": "24.00",
+      "subtractedAmount": "0.00",
+      "currentBalance": "90.00",
       "id": 3
     },
     {
+      "previousBalance": "90.00",
       "addedAmount": "0.00",
-      "subtractedAmount": "5.00",
-      "newBalance": "18.00",
+      "subtractedAmount": "0.00",
+      "currentBalance": "90.00",
       "id": 4
     },
     {
+      "previousBalance": "90.00",
       "addedAmount": "0.00",
-      "subtractedAmount": "5.00",
-      "newBalance": "13.00",
+      "subtractedAmount": "0.00",
+      "currentBalance": "90.00",
       "id": 5
     },
     {
+      "previousBalance": "90.00",
       "addedAmount": "0.00",
-      "subtractedAmount": "0.00",
-      "newBalance": "13.00",
+      "subtractedAmount": "5.00",
+      "currentBalance": "85.00",
       "id": 6
-    },
-    {
-      "addedAmount": "0.00",
-      "subtractedAmount": "0.00",
-      "newBalance": "13.00",
-      "id": 7
-    },
-    {
-      "addedAmount": "0.00",
-      "subtractedAmount": "0.00",
-      "newBalance": "13.00",
-      "id": 8
     }
   ]
 }

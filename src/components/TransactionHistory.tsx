@@ -15,7 +15,7 @@ export class TransactionHistory extends Component<{
               <div>Previous Balance: {lastBalance}</div>
               <div>Added Amount: +{transaction.addedAmount}</div>
               <div>Subtracted Amount: -{transaction.subtractedAmount}</div>
-              <div>Current Balance: {transaction.newBalance}</div>
+              <div>Current Balance: {transaction.currentBalance}</div>
             </div>
           </div>
         ))}
