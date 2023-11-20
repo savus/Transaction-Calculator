@@ -48,6 +48,27 @@
       "subtractedAmount": "5.00",
       "currentBalance": "85.00",
       "id": 6
+    },
+    {
+      "previousBalance": "85.00",
+      "addedAmount": "0.00",
+      "subtractedAmount": "45.00",
+      "currentBalance": "40.00",
+      "id": 7
+    },
+    {
+      "previousBalance": "40.00",
+      "addedAmount": "0.00",
+      "subtractedAmount": "21.47",
+      "currentBalance": "18.53",
+      "id": 8
+    },
+    {
+      "previousBalance": "18.53",
+      "addedAmount": "0.00",
+      "subtractedAmount": "12.00",
+      "currentBalance": "6.53",
+      "id": 9
     }
   ]
 }

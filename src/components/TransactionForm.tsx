@@ -19,13 +19,13 @@ export class TransactionForm extends Component<{
     const parsedLastBalance = parseFloat(this.props.lastBalance);
     const parsedAmountToAdd = parseFloat(this.state.amountToAddInput);
     const parsedAmountToSubtract = parseFloat(this.state.amountToSubtractInput);
-    return `${parsedLastBalance + parsedAmountToAdd - parsedAmountToSubtract}`;
+    return `${(parsedLastBalance + parsedAmountToAdd - parsedAmountToSubtract).toFixed(2)}`;
   };
 
   resetTotals = () => {
     this.setState({
-      amountToAdd: "0.00",
-      amountToSubtract: "0.00",
+      amountToAddInput: "0.00",
+      amountToSubtractInput: "0.00",
     });
   };
 
