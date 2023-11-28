@@ -1,3 +1,48 @@
+
+#theme-panel {
+  position:absolute;
+  right:0;
+  top:35%;
+  background-color:blue;
+  padding: 1rem 1.2rem;
+  color:#fff;
+}
+
+#theme-body .theme-title {
+  margin-bottom: 1rem;
+  font-size:var(--size-18);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+#theme-body .btn-group {
+  background-color:#fff;
+  height:40px;
+  display:flex;
+  justify-content: center;
+  border-radius:50rem;
+  overflow:hidden;
+}
+
+.btn-group button {
+  width:50%;
+  background:transparent;
+  border:none;
+  outline:none;
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.8px;
+  font-weight:700;
+  height:100%;
+  padding:0;
+  cursor: pointer;
+}
+
+.btn-group button.active {
+  background-color:var(--border);
+  color:#fff;
+}
+
 .transaction-app-wrapper {
   border: 1px solid rgba(25, 25, 25, 0.6);
   border-radius: 20px;
