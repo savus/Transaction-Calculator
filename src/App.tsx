@@ -41,6 +41,20 @@ function App() {
 
   return (
     <>
+      
+      <div id="theme-panel">
+        <div id="theme-body">
+          <div className="theme-title">Change Theme</div>
+          <div className="btn-group">
+            <button className="active">Light</button>
+            <button>Dark</button>
+          </div>
+        </div>
+        <button id="theme-tab">
+          <i className="fa fas-chevron-right"></i>
+        </button>
+      </div>
+
       <main className="transaction-app-wrapper container-md">
         <div className="transaction-button-container horizontal-center">
           <button
