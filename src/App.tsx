@@ -1,100 +1,28 @@
-import { useState, useEffect } from "react";
-import "../src/css/base.css";
-import "../src/css/theme.css";
-import "../src/css/styles.css";
-import { TTransaction } from "./types";
-import { Requests } from "./api";
-import { TransactionHistory } from "./components/TransactionHistory";
-import { TransactionForm } from "./components/TransactionForm";
-import { ModalSectionLayout } from "./components/Layouts/ModalSectionLayout";
-import { TransactionHistoryContainer } from "./components/Layouts/TransactionHistoryContainer";
+import { Component } from "react";
+import "./css/base.css";
+import "./css/styles.css";
+import { ModalButton } from "./components/ModalButton";
+import { ButtonContainer } from "./components/ButtonContainer";
+import { ModalComponent } from "./components/ModalComponent";
 
-function App() {
-  const [transactionModalVisible, setTransactionModalVisible] = useState("");
-  const [allTransactions, setAllTransactions] = useState<TTransaction[]>([]);
-  const [lastBalance, setLastBalance] = useState("0.00");
-  const [isLoading, setIsLoading] = useState(false);
-
-  const fetchData = () => {
-    setIsLoading(true);
-    return Requests.getAllTransactions()
-      .then((transactions) => {
-        setLastBalance(transactions[transactions.length - 1].currentBalance);
-        setAllTransactions(transactions);
-      })
-      .finally(() => setIsLoading(false));
-  };
-
-  const postTransaction = (transaction: Omit<TTransaction, "id">) => {
-    setIsLoading(true);
-    return Requests.postTransaction(transaction).then(fetchData);
-  };
-
-  const getReversedTransactionList = () => {
-    const reversedList = [...allTransactions].sort((a, b) => b.id - a.id);
-    return reversedList;
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  return (
-    <>
-      
-      <div id="theme-panel">
-        <div id="theme-body">
-          <div className="theme-title">Change Theme</div>
-          <div className="btn-group">
-            <button className="active">Light</button>
-            <button>Dark</button>
-          </div>
-        </div>
-        <button id="theme-tab">
-          <i className="fa fas-chevron-right"></i>
-        </button>
-      </div>
-
-      <main className="transaction-app-wrapper container-md">
-        <div className="transaction-button-container horizontal-center">
-          <button
-            id="transaction-modal-button"
-            className="btn spread-out-transition"
-            data-open="new-transaction"
-            onClick={() => setTransactionModalVisible("is-visible")}
-          >
-            Create New Transaction
-          </button>
-        </div>
-        <TransactionHistoryContainer>
-          <TransactionHistory
-            reversedTransactionList={getReversedTransactionList()}
-            lastBalance={lastBalance}
-          />
-        </TransactionHistoryContainer>
-      </main>
-
-      <ModalSectionLayout
-        transactionModalVisible={transactionModalVisible}
-        setTransactionModalVisible={(modalState) => {
-          setTransactionModalVisible(modalState);
-        }}
-        lastBalance={lastBalance}
-      >
-        <TransactionForm
-          lastBalance={lastBalance}
-          setLastBalance={(balance) => {
-            setLastBalance(balance);
-          }}
-          postTransaction={postTransaction}
-          isLoading={isLoading}
-          setTransactionModalVisible={(transactionModalVisible) => {
-            setTransactionModalVisible(transactionModalVisible);
-          }}
-        />
-      </ModalSectionLayout>
-    </>
-  );
+class App extends Component<Record<string, never>> {
+  render() {
+    return (
+      <>
+        <main className="container-md transaction-container">
+          <header className="transaction-header">
+            <ButtonContainer>
+              <ModalButton
+                text={"Create New Transaction"}
+                onClick={() => console.log("clicked")}
+              />
+            </ButtonContainer>
+          </header>
+        </main>
+        <ModalComponent />
+      </>
+    );
+  }
 }
 
 export default App;

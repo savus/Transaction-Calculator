@@ -1,11 +1,3 @@
-import { ComponentProps } from "react"
-
-export type TTransaction = {
-    "id": number,
-    "previousBalance": string,
-    "addedAmount": string,
-    "subtractedAmount": string,
-    "currentBalance": string
-};
+import { ComponentProps } from "react";
 
 export type InputProps = ComponentProps<"input">;
