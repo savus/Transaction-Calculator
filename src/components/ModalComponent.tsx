@@ -21,7 +21,10 @@ export class ModalComponent extends Component<{
           }}
         >
           <div className="modal-body container-md">
-            <TransactionForm />
+            <TransactionForm
+              setModalVisibleState={setModalVisibleState}
+              modalVisibleState={modalVisibleState}
+            />
           </div>
         </div>
       </>

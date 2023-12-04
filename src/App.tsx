@@ -11,7 +11,7 @@ type State = {
 
 class App extends Component<Record<string, never>, State> {
   state: State = {
-    modalVisibleState: "",
+    modalVisibleState: "is-visible",
   };
   render() {
     const { modalVisibleState } = this.state;

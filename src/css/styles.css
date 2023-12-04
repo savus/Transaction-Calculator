@@ -44,6 +44,19 @@ body {
   width: 50%;
 }
 
+.modal-body .left-side > div,
+.modal-body .right-side > div {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.modal-body .new-balance {
+  text-align: center;
+}
+
 .transaction-container {
   border: 1px solid black;
   border-radius: 10px;
