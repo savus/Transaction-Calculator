@@ -5,9 +5,10 @@ import { InputComponent } from "./InputComponent";
 export class TransactionForm extends Component<{
   setModalVisibleState: (modalVisibleState: string) => void;
   modalVisibleState: string;
+  isVisible: string;
 }> {
   render() {
-    const { setModalVisibleState, modalVisibleState } = this.props;
+    const { setModalVisibleState, modalVisibleState, isVisible } = this.props;
     return (
       <>
         <form
@@ -15,9 +16,9 @@ export class TransactionForm extends Component<{
           data-animation="zoomInOut"
           onSubmit={(e) => {
             e.preventDefault();
-            if (modalVisibleState === "is-visible")
+            if (modalVisibleState === isVisible)
               return setModalVisibleState("");
-            return setModalVisibleState("is-visible");
+            return setModalVisibleState(isVisible);
           }}
         >
           <div className="left-side">
@@ -25,6 +26,7 @@ export class TransactionForm extends Component<{
               Current Balance: $100.00
               <InputComponent
                 inputProps={{
+                  type: "text",
                   className: "input-primary",
                 }}
               />
@@ -33,6 +35,7 @@ export class TransactionForm extends Component<{
               Amount To Add: $0.00
               <InputComponent
                 inputProps={{
+                  type: "text",
                   className: "input-primary",
                 }}
               />
@@ -41,6 +44,7 @@ export class TransactionForm extends Component<{
               Amount to Subtract: $0.00
               <InputComponent
                 inputProps={{
+                  type: "text",
                   className: "input-primary",
                 }}
               />

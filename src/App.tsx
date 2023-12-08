@@ -9,9 +9,11 @@ type State = {
   modalVisibleState: string;
 };
 
+const isVisible = "is-visible";
+
 class App extends Component<Record<string, never>, State> {
   state: State = {
-    modalVisibleState: "is-visible",
+    modalVisibleState: isVisible,
   };
   render() {
     const { modalVisibleState } = this.state;
@@ -23,7 +25,7 @@ class App extends Component<Record<string, never>, State> {
               <ModalButton
                 text={"Create New Transaction"}
                 onClick={() => {
-                  this.setState({ modalVisibleState: "is-visible" });
+                  this.setState({ modalVisibleState: isVisible });
                 }}
               />
             </ButtonContainer>

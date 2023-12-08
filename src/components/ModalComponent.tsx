@@ -4,9 +4,10 @@ import { TransactionForm } from "./TransactionForm";
 export class ModalComponent extends Component<{
   modalVisibleState: string;
   setModalVisibleState: (modalVisibleState: string) => void;
+  isVisible: string;
 }> {
   render() {
-    const { modalVisibleState, setModalVisibleState } = this.props;
+    const { modalVisibleState, setModalVisibleState, isVisible } = this.props;
     return (
       <>
         <div
@@ -24,6 +25,7 @@ export class ModalComponent extends Component<{
             <TransactionForm
               setModalVisibleState={setModalVisibleState}
               modalVisibleState={modalVisibleState}
+              isVisible={isVisible}
             />
           </div>
         </div>
