@@ -2,11 +2,14 @@ import { Component } from "react";
 import "./css/base.css";
 import "./css/styles.css";
 import { ModalButton } from "./components/ModalButton";
-import { ButtonContainer } from "./components/ButtonContainer";
+import { ButtonContainer } from "./components/shared/ButtonContainer";
 import { ModalComponent } from "./components/ModalComponent";
+import { Requests } from "./api";
+import { Transaction } from "./types";
 
 type State = {
   modalVisibleState: string;
+  allTransactions: Transaction[];
 };
 
 const isVisible = "is-visible";
@@ -14,7 +17,16 @@ const isVisible = "is-visible";
 class App extends Component<Record<string, never>, State> {
   state: State = {
     modalVisibleState: isVisible,
+    allTransactions: [],
   };
+
+  refetchData = () => {
+    return Requests.getAllTransactions().then((responses) => {
+      this.setState({ allTransactions: responses });
+    });
+  };
+
+  componentDidMount(): void {}
   render() {
     const { modalVisibleState } = this.state;
     return (
@@ -36,6 +48,7 @@ class App extends Component<Record<string, never>, State> {
           setModalVisibleState={(modalVisibleState) => {
             this.setState({ modalVisibleState: modalVisibleState });
           }}
+          isVisible={isVisible}
         />
       </>
     );
