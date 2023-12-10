@@ -2,80 +2,17 @@
   "transactions": [
     {
       "id": 0,
-      "previousBalance": "0.00",
-      "addedAmount": "0.00",
-      "subtractedAmount": "0.00",
+      "currentBalance": "0.00",
+      "withdrawAmount": "0.00",
+      "depositAmount": "0.00",
       "newBalance": "20.00"
     },
     {
-      "previousBalance": "100.00",
-      "addedAmount": "0.00",
-      "subtractedAmount": "5.00",
-      "currentBalance": "95.00",
+      "currentBalance": "20.00",
+      "withdrawAmount": "5.00",
+      "depositAmount": "0.00",
+      "newBalance": "15.00",
       "id": 1
-    },
-    {
-      "previousBalance": "95.00",
-      "addedAmount": "0.00",
-      "subtractedAmount": "5.00",
-      "currentBalance": "90.00",
-      "id": 2
-    },
-    {
-      "previousBalance": "90.00",
-      "addedAmount": "0.00",
-      "subtractedAmount": "0.00",
-      "currentBalance": "90.00",
-      "id": 3
-    },
-    {
-      "previousBalance": "90.00",
-      "addedAmount": "0.00",
-      "subtractedAmount": "0.00",
-      "currentBalance": "90.00",
-      "id": 4
-    },
-    {
-      "previousBalance": "90.00",
-      "addedAmount": "0.00",
-      "subtractedAmount": "0.00",
-      "currentBalance": "90.00",
-      "id": 5
-    },
-    {
-      "previousBalance": "90.00",
-      "addedAmount": "0.00",
-      "subtractedAmount": "5.00",
-      "currentBalance": "85.00",
-      "id": 6
-    },
-    {
-      "previousBalance": "85.00",
-      "addedAmount": "0.00",
-      "subtractedAmount": "45.00",
-      "currentBalance": "40.00",
-      "id": 7
-    },
-    {
-      "previousBalance": "40.00",
-      "addedAmount": "0.00",
-      "subtractedAmount": "21.47",
-      "currentBalance": "18.53",
-      "id": 8
-    },
-    {
-      "previousBalance": "18.53",
-      "addedAmount": "0.00",
-      "subtractedAmount": "12.00",
-      "currentBalance": "6.53",
-      "id": 9
-    },
-    {
-      "previousBalance": "100.00",
-      "addedAmount": "0.00",
-      "subtractedAmount": "43.72",
-      "currentBalance": "56.28",
-      "id": 10
     }
   ]
 }

@@ -4,8 +4,8 @@ export type InputProps = ComponentProps<"input">;
 
 export type Transaction = {
   id: number;
-  previousBalance: string;
-  addedAmount: string;
-  subtractedAmount: string;
+  currentBalance: string;
+  withdrawAmount: string;
+  depositAmount: string;
   newBalance: string;
 };

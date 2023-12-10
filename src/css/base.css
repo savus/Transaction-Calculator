@@ -79,11 +79,10 @@ button {
   font-weight: 700;
   border: 0.1px solid rgba(0, 0, 0, 0.3);
   background: transparent;
-  font-size: 1.2rem;
   padding: 0.5rem 1.5rem;
   border-radius: 50rem;
   cursor: pointer;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.1px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -104,7 +103,7 @@ button:not(:disabled):not(.disabled) {
 
 .btn-primary:hover {
   box-shadow: 0 -5px 6px 3px var(--button-primary) inset;
-  transform: scale(1.2);
+  transform: scale(1.089);
 }
 
 .btn-primary:active {
@@ -113,8 +112,20 @@ button:not(:disabled):not(.disabled) {
   background-color: rgba(30, 55, 246, 0.1);
 }
 
+.btn-secondary {
+  transition: background-color 0.2s ease-in-out, border 0.1s;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 2px solid black;
+}
+
+.btn-secondary:active {
+  transition: none;
+  background-color: rgba(0, 0, 0, 0.025);
+}
 .input-primary {
-  font-size: 1.2rem;
   outline: none;
   padding: 0.5rem 0.8rem;
   border-radius: 50rem;

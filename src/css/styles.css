@@ -46,7 +46,7 @@ body {
 
 .modal-body .left-side > div,
 .modal-body .right-side > div {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 18px;
   font-weight: 700;
   text-transform: uppercase;
@@ -66,7 +66,17 @@ body {
   padding: 1rem;
 }
 
-.btn-container {
+.left-side .btn-center {
+  justify-content: space-between;
+  height: 35px;
+}
+
+.left-side .btn-center input,
+.left-side .btn-center button {
+  width: 48%;
+}
+
+.btn-center {
   display: flex;
   justify-content: center;
   align-items: center;
