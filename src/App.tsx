@@ -14,7 +14,7 @@ type State = {
 
 class App extends Component<Record<string, never>, State> {
   state: State = {
-    currentBalance: "12.00",
+    currentBalance: "0.00",
     currentBalanceInput: "0.00",
     withdrawInput: "0.00",
     depositInput: "0.00",
@@ -24,7 +24,8 @@ class App extends Component<Record<string, never>, State> {
   fetchData = () => {
     return Requests.getAllTransactions().then((responses) => {
       this.setState({ allTransactions: responses });
-      console.log(this.state.allTransactions);
+      const isLastTransaction = responses[responses.length - 1];
+      this.setState({ currentBalance: isLastTransaction.newBalance });
     });
   };
 
@@ -53,6 +54,9 @@ class App extends Component<Record<string, never>, State> {
       const parsedDeposit = parseFloat(depositInput);
       return `${(parsedCurrent - parsedWithdraw + parsedDeposit).toFixed(2)}`;
     };
+
+    const sortedTransactions = [...allTransactions].sort((a, b) => b.id - a.id);
+
     return (
       <>
         <div className="full-site-modal is-visible" data-animation="fadeInOut">
@@ -134,7 +138,9 @@ class App extends Component<Record<string, never>, State> {
                 </div>
               </div>
               <div className="right-side">
-                <div className="new-balance">New Balance ${currentBalance}</div>
+                <div className="new-balance">
+                  New Balance ${calculateTotals()}
+                </div>
                 <div className="btn-center">
                   <button className="btn btn-primary">
                     Post New Transaction
@@ -150,7 +156,7 @@ class App extends Component<Record<string, never>, State> {
           style={{ backgroundColor: "#fff", color: "#000" }}
         >
           <h1>Transactions</h1>
-          {allTransactions.map((transaction) => (
+          {sortedTransactions.map((transaction) => (
             <div key={transaction.id}>
               <div>Previous Balance: {transaction.currentBalance}</div>
               <div>Withdraw Amount: {transaction.withdrawAmount}</div>
