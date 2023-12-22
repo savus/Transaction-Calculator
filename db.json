@@ -20,6 +20,20 @@
       "depositAmount": "0.00",
       "newBalance": "100.00",
       "id": 2
+    },
+    {
+      "currentBalance": "2000.00",
+      "withdrawAmount": "40.00",
+      "depositAmount": "20.00",
+      "newBalance": "1000.00",
+      "id": 3
+    },
+    {
+      "currentBalance": "2000.00",
+      "withdrawAmount": "40.00",
+      "depositAmount": "20.00",
+      "newBalance": "1000.00",
+      "id": 4
     }
   ]
 }

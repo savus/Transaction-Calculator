@@ -2,7 +2,7 @@ import { Component } from "react";
 import "./css/base.css";
 import "./css/styles.css";
 import { Requests } from "./api";
-import { Transaction } from "./types";
+import { TModalState, Transaction } from "./types";
 
 type State = {
   currentBalance: string;
@@ -10,6 +10,7 @@ type State = {
   withdrawInput: string;
   depositInput: string;
   allTransactions: Transaction[];
+  modalVisibleState: TModalState;
 };
 
 class App extends Component<Record<string, never>, State> {
@@ -19,6 +20,7 @@ class App extends Component<Record<string, never>, State> {
     withdrawInput: "0.00",
     depositInput: "0.00",
     allTransactions: [],
+    modalVisibleState: "",
   };
 
   fetchData = () => {
@@ -46,6 +48,7 @@ class App extends Component<Record<string, never>, State> {
       withdrawInput,
       depositInput,
       allTransactions,
+      modalVisibleState,
     } = this.state;
 
     const calculateTotals = () => {
@@ -55,22 +58,34 @@ class App extends Component<Record<string, never>, State> {
       return `${(parsedCurrent - parsedWithdraw + parsedDeposit).toFixed(2)}`;
     };
 
+    const resetInputs = () => {
+      this.setState({
+        currentBalanceInput: "0.00",
+        withdrawInput: "0.00",
+        depositInput: "0.00",
+      });
+    };
+
     const sortedTransactions = [...allTransactions].sort((a, b) => b.id - a.id);
 
     return (
       <>
-        <div className="full-site-modal is-visible" data-animation="fadeInOut">
+        <div
+          className={`full-site-modal ${modalVisibleState}`}
+          data-animation="fadeInOut"
+          onClick={(e) => {
+            const target = e.target;
+            if (target.className.includes("full-site-modal"))
+              this.setState({ modalVisibleState: "" });
+          }}
+        >
           <div className="modal-body container-md">
             <form
               id="transaction-form"
               onSubmit={(e) => {
                 e.preventDefault();
-                this.postTransaction({
-                  currentBalance: currentBalance,
-                  withdrawAmount: withdrawInput,
-                  depositAmount: depositInput,
-                  newBalance: calculateTotals(),
-                });
+                this.setState({ modalVisibleState: "" });
+                // resetInputs();
               }}
             >
               <div className="left-side">
@@ -91,6 +106,8 @@ class App extends Component<Record<string, never>, State> {
                     className="btn btn-secondary"
                     onClick={() => {
                       this.setState({ currentBalance: currentBalanceInput });
+                      console.log(currentBalance, currentBalanceInput);
+                      // resetInputs();
                     }}
                   >
                     Change
@@ -111,6 +128,7 @@ class App extends Component<Record<string, never>, State> {
                     className="btn btn-secondary"
                     onClick={() => {
                       this.setState({ currentBalance: calculateTotals() });
+                      // resetInputs();
                     }}
                   >
                     Withdraw
@@ -131,6 +149,7 @@ class App extends Component<Record<string, never>, State> {
                     className="btn btn-secondary"
                     onClick={() => {
                       this.setState({ currentBalance: calculateTotals() });
+                      // resetInputs();
                     }}
                   >
                     Deposit
@@ -142,7 +161,14 @@ class App extends Component<Record<string, never>, State> {
                   New Balance ${calculateTotals()}
                 </div>
                 <div className="btn-center">
-                  <button className="btn btn-primary">
+                  <button
+                    className="btn btn-primary"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      this.setState({ modalVisibleState: "" });
+                      // resetInputs();
+                    }}
+                  >
                     Post New Transaction
                   </button>
                 </div>
@@ -154,14 +180,39 @@ class App extends Component<Record<string, never>, State> {
         <div
           id="transaction-history"
           style={{ backgroundColor: "#fff", color: "#000" }}
+          className="container-md"
         >
-          <h1>Transactions</h1>
+          <header className="history-header">
+            <h1>Transactions</h1>
+            <button
+              id="new-transaction-button"
+              className="btn btn-primary"
+              onClick={(e) => {
+                e.preventDefault();
+                this.setState({ modalVisibleState: "is-visible" });
+              }}
+            >
+              New Transaction
+            </button>
+          </header>
           {sortedTransactions.map((transaction) => (
-            <div key={transaction.id}>
-              <div>Previous Balance: {transaction.currentBalance}</div>
-              <div>Withdraw Amount: {transaction.withdrawAmount}</div>
-              <div>Deposit Amount: {transaction.depositAmount}</div>
-              <div>Current Balance: {transaction.newBalance}</div>
+            <div className="transaction-card" key={transaction.id}>
+              <div>
+                Previous Balance:
+                <span>{transaction.currentBalance}</span>
+              </div>
+              <div>
+                Withdraw Amount:
+                <span>{transaction.withdrawAmount}</span>
+              </div>
+              <div>
+                Deposit Amount:
+                <span>{transaction.depositAmount}</span>
+              </div>
+              <div>
+                Current Balance:
+                <span>{transaction.newBalance}</span>
+              </div>
             </div>
           ))}
         </div>

@@ -9,3 +9,5 @@ export type Transaction = {
   depositAmount: string;
   newBalance: string;
 };
+
+export type TModalState = "is-visible" | "";

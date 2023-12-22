@@ -36,12 +36,16 @@ body {
 #transaction-form {
   display: flex;
   justify-content: space-between;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+}
+
+.modal-body .left-side {
+  margin-right: 20px;
 }
 
 .modal-body .left-side,
 .modal-body .right-side {
-  width: 50%;
+  max-width: 320px;
 }
 
 .modal-body .left-side > div,
@@ -82,6 +86,41 @@ body {
   align-items: center;
 }
 
+#transaction-history {
+  padding-bottom: var(--size-18);
+}
+
+.history-header {
+  text-align: center;
+  border-bottom: 1.5px solid black;
+  padding: 1.5rem 0;
+  margin-bottom: var(--size-30);
+}
+
+.history-header h1 {
+  margin-bottom: var(--size-10);
+}
+
+#new-transaction-button {
+  font-size: var(--size-15);
+}
+
+.transaction-card {
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 6px 5px 2px 1px rgba(0, 0, 0, 0.123);
+}
+
+.transaction-card > div {
+  margin: 1rem 3rem;
+  font-size: var(--size-15);
+  font-weight: 700;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-around;
+}
+
 [data-animation="fadeInOut"] {
   transition: visibility 0.35s, opacity 0.35s;
 }
@@ -91,4 +130,11 @@ body {
   top: 0;
   visibility: visible;
   opacity: 1;
+}
+
+@media (min-width: 340px) {
+  #transaction-form {
+    justify-content: center;
+    text-align: center;
+  }
 }
